@@ -22,14 +22,14 @@
  }
 ```
 ## Shared Memory 함수
- - int shmget(key_t key, int size, int shmflg)
+### ✅ ``` int shmget(key_t key, int size, int shmflg) ```
   : 커널에 공유 메모리 공간 할당을 요청 (shmflg : 접근권한, 생성방식)
 
- - void *shmat( int shmid, const void *shmaddr, int shmflg )
-  : 공유 메모리 공간을 생성한 이후, 공유메모리에 접근할 수 있는 int형의 "식별자"를 얻는다
+### ✅ ```void *shmat( int shmid, const void *shmaddr, int shmflg )```
+: 공유 메모리 공간을 생성한 이후, 공유메모리에 접근할 수 있는 int형의 "식별자"를 얻는다
   (식별자, 메모리가 붙을 주소 (0을 사용할 경우 커널이 메모리가 붙을 주소를 명시), 읽기/쓰기 모드)
 
- - int shmdt( const void *shmaddr)
+### ✅ ```int shmdt( const void *shmaddr)```
   : 프로세스가 더이상 공유 메모리를 사용하지 않을 경우 프로세스와 공유 메모리를 분리시키는 작업
   * 해당 시스템 호출 함수는 현재 프로세스와 공유 메모리를 분리시킬 뿐, 공유 메모리의 공간을 삭제하지 않는다
   * shmdt 가 성공적으로 수행되면 커널은 shmid_ds 의 내용을 갱신, 즉 shm_dtime, shm_lpid, shm_nattch 등의 내용을 갱신 하는데,
@@ -37,7 +37,7 @@
     * shm_lpid 는 호출한 프로세세의 PID
     * shm_nattch 는 현재 공유 메모리를 사용하는 (shmat 를 이용해서 공유 메모리에 붙어있는) 프로세스의 수 리턴
 
- - int shmctl(int shmid, int cmd, struct shmid_ds *buf)
+### ✅ ```int shmctl(int shmid, int cmd, struct shmid_ds *buf)```
   : 공유 메모리를 제어하기 위해 사용
   * 해당 공유 메모리에 대한 소유자, 그룹 등의 허가권을 변경하거나, 공유 메모리 삭제, 공유 메모리의 잠금을 설정하거나 해제하는 작업
   * Option (cmd)
